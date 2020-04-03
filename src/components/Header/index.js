@@ -1,6 +1,5 @@
 import React from 'react';
 import { Layout, Input, Popover, Anchor, Avatar } from 'antd';
-import { connect } from 'react-redux';
 let timer;
 const Header = ({ onSearch, isProcessing, user, logout }) => {
   const searchValue = (event) => {
@@ -25,11 +24,4 @@ const Header = ({ onSearch, isProcessing, user, logout }) => {
   </Layout.Header>)
 }
 
-const mapStateToProps = ({ user: { loggedInUser } }) => {
-  return {
-    loggedInUser
-  }
-}
-
-
-export default connect(mapStateToProps)(Header);
+export default Header;
