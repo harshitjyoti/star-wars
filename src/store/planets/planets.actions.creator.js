@@ -7,14 +7,14 @@ export const searchPlanetsFetch = (param) => {
     return fetch(`${fetchUrl}?${param}`)
       .then((response) => {
         response.json().then((res) => dispatch({
-        type: searchPlanets.SUCCESS,
-        payload: { response: res, isSearch : param.indexOf('search') >= 0 }
+          type: searchPlanets.SUCCESS,
+          payload: { response: res, isSearch: param.indexOf('search') >= 0 }
+        })
+        )
+      }).catch((err) => {
+        console.log(err)
+        dispatch({ type: searchPlanets.ERROR })
       })
-    )
-    }).catch((err) => {
-      console.log(err)
-      dispatch({ type: searchPlanets.ERROR })
-    })
   }
 }
 

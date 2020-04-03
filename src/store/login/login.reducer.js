@@ -16,12 +16,12 @@ const profileReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isUserFetched: false
       }
-      case 'LOGOUT':
-          return {
-            ...state,
-            isUserFetched: false,
-            userDetails: null
-          }
+    case 'LOGOUT':
+      return {
+        ...state,
+        isUserFetched: false,
+        userDetails: null
+      }
     case updateProfileDetails.REQUEST:
       return {
         ...state,
@@ -29,17 +29,17 @@ const profileReducer = (state = INITIAL_STATE, action) => {
       }
     case updateProfileDetails.SUCCESS:
       let user = null;
-      const { response , userDetails : { password, user: name} } = action.payload
-      if(response.count) {
-        user = response.results.filter((user)=> 
-        ( user.birth_year === password ) && (user.name === name) 
+      const { response, userDetails: { password, user: name } } = action.payload
+      if (response.count) {
+        user = response.results.filter((user) =>
+          (user.birth_year === password) && (user.name === name)
         )
-        user = user.length===1 ? user[0] : null;
-      } 
+        user = user.length === 1 ? user[0] : null;
+      }
       return {
         ...state,
         userDetails: user,
-        isSuperUser : user && user.name === superUser,
+        isSuperUser: user && user.name === superUser,
         isProcessing: false,
         isUserFetched: true
       }

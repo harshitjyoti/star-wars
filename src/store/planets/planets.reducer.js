@@ -10,7 +10,7 @@ const INITIAL_STATE = {
 const profileReducer = (state = INITIAL_STATE, action) => {
 
   switch (action.type) {
-    case 'RESET': 
+    case 'RESET':
       return {
         ...state,
         callsRemaining: 15
@@ -26,7 +26,7 @@ const profileReducer = (state = INITIAL_STATE, action) => {
         planets: action.payload.response,
         isProcessing: false,
         isPlanetFetched: true,
-        callsRemaining: action.payload.isSearch ?  state.callsRemaining - 1 : state.callsRemaining
+        callsRemaining: action.payload.isSearch ? state.callsRemaining - 1 : state.callsRemaining
       }
     case searchPlanets.ERROR:
       return {

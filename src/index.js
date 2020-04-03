@@ -9,17 +9,20 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk'
 import combinedRducer from './store/store';
+import { ErrorBoundary } from './components';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const  store = createStore(combinedRducer,
+const store = createStore(combinedRducer,
   composeEnhancers(applyMiddleware(thunkMiddleware))
-  );
-  
+);
+
 ReactDOM.render(
 
   <React.StrictMode>
-    <Provider store = {store}>
+    <Provider store={store}>
       <BrowserRouter>
-        <App  />
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

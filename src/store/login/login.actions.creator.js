@@ -7,16 +7,16 @@ export const loginAction = (userDetails) => {
     return fetch(loginUrl.replace('{username}', userDetails.user))
       .then((response) => {
         response.json().then((res) => dispatch({
-        type: updateProfileDetails.SUCCESS,
-        payload: { response: res, userDetails }
+          type: updateProfileDetails.SUCCESS,
+          payload: { response: res, userDetails }
+        })
+        )
+      }).catch((err) => {
+        console.log(err)
+        dispatch({ type: updateProfileDetails.ERROR })
       })
-    )
-    }).catch((err) => {
-      console.log(err)
-      dispatch({ type: updateProfileDetails.ERROR })
-    })
   }
 }
 
-export const setUser = () => ({ type: 'RESET_USER'});
-export const logout = () => ({ type: 'LOGOUT'});
+export const setUser = () => ({ type: 'RESET_USER' });
+export const logout = () => ({ type: 'LOGOUT' });

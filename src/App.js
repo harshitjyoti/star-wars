@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Login } from './components'
+import { Login, ErrorComp } from './components'
 import Planets from './container/Planets';
-//import Planets from './planets';
 
 const App = () => {
   return (<Switch>
     <Route exact path='/' component={Login} />
     <Route path='/planets' component={Planets} />
+    <Route path='/error' component={ErrorComp} />
     <Route component={Login} />
   </Switch>
   );

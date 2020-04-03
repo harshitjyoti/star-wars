@@ -9,20 +9,23 @@ import { clearInterval } from 'timers';
 const { Content } = Layout;
 
 const Planets = ({ callsRemaining, searchPlanetsFetch, isProcessing,
-  planets, history, userDetails, resetCalls, isSuperUser, logout }) => {
+  planets, history, userDetails, resetCalls, isSuperUser, logout, hasError }) => {
   let timer;
   useEffect(() => {
     clearInterval(timer);
-    !userDetails && history.push('/');
+    //!userDetails && history.push('/');
     timer = setInterval(() => {
       resetCalls()
     }, 60000);
   }, [])
 
   useEffect(() => {
-    console.log("sdad")
     if (!userDetails) history.push('/');
   }, [userDetails])
+
+  useEffect(() => {
+    if (hasError) history.push('/error');
+  }, [hasError])
 
   const error = () => {
     message.error('You have consumed your api calls please wait till it resets .');
