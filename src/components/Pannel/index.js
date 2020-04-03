@@ -1,10 +1,14 @@
 import React from 'react';
 import { Collapse, Badge } from 'antd';
 import { getColor } from '../../helpers';
-
+import { icons } from '../../constants';
+Math.floor(Math.random() * 10)
 const getExtra = (population, color) => <Badge style={{ backgroundColor: color }} count={parseInt(population).toLocaleString()} />
 
-const getHeader = (name, color) => <span style={{ color, fontWeight: 'bold', textDecoration: "underline" }} >{name}</span>
+const getHeader = (name, color) => <>
+{icons[Math.floor(Math.random() * 10)]}
+<span style={{ color, fontWeight: 'bold', textDecoration: "underline" }} >{name}</span>
+</>
 const Pannel = ({ planets }) => {
   return planets.map((item) => {
     const color = getColor(item.population)
